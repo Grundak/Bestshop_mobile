@@ -1,0 +1,116 @@
+@mixin basefont($font-size) {
+    font-family: $secondary-font;
+    font-weight: 500;
+    font-size: $font-size;
+    font-style: normal;
+}
+
+@mixin mobile () {
+    @media (min-width: 440px) {
+        @content;
+    }
+}
+
+.intro__header {
+    display: flex;
+    justify-content: center;
+
+    .intro__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: $base-cont;
+        padding: $base-padding;
+    }
+
+    .intro__logo {
+        @include basefont(2em);
+        font-weight: 300;
+        color: $quaternary-color;
+    }
+
+    .intro__menu {
+        display: flex;
+        gap: 1em;
+    }
+
+    .intro__menu li {
+        display: flex;
+        list-style: none;
+        font-family: $primary-font;
+        font-size: 11px;
+        text-transform: uppercase;
+        color: $tertiary-color;
+    }
+
+    .intro__nav ol {
+        display: none;
+
+        @include mobile {
+            display: flex;
+        }
+    }
+
+    .intro__nav label {
+        display: flex;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    .hamburger__menu {
+        display: flex;
+        flex-direction: column;
+        gap: $hamburger-gap;
+        width: max-content;
+        position: absolute;
+        top: $hamburger-margin;
+        right: $hamburger-margin;
+        z-index: 3;
+        cursor: pointer;
+
+    }
+
+    .hamburger__menu::before,
+    .hamburger__menu::after,
+    .hamburger__menu input {
+        content: "";
+        width: $base-width;
+        height: $bar-height;
+        background-color: $quaternary-color;
+        border-radius: 100px;
+        transform-origin: left center;
+        transition: opacity $animation-timing, width $animation-timing, rotate $animation-timing, translate $animation-timing;
+    }
+
+    .hamburger__menu input {
+        appearance: none;
+        outline: none;
+        pointer-events: none;
+    }
+
+    .hamburger__menu:has(input:checked)::before {
+        rotate: 45deg;
+        width: $x-width;
+        translate: 0 calc($bar-height / -2);
+    }
+
+    .hamburger__menu:has(input:checked)::after {
+        rotate: -45deg;
+        width: $x-width;
+        translate: 0 calc($bar-height / 2);
+    }
+
+    .hamburger__menu input:checked {
+        opacity: 0;
+        width: 0;
+    }
+
+    .intro__nav:has(input:checked) ol {
+        display: block;
+        position: relative;
+        top: 3em;
+    }
+
+}
