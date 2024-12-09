@@ -17,8 +17,8 @@
 
     .intro__nav {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
         width: $base-cont;
         padding: $base-padding;
     }
@@ -108,9 +108,11 @@
     }
 
     .intro__nav:has(input:checked) ol {
-        display: block;
-        position: relative;
-        top: 3em;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 4em;
+        right: 2em;
     }
 
 }

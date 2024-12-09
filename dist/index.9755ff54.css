@@ -310,9 +310,11 @@ textarea {
 }
 
 .intro__header .intro__nav:has(input:checked) ol {
-  display: block;
-  position: relative;
-  top: 3em;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  top: 4em;
+  right: 2em;
 }
 
 /*# sourceMappingURL=index.9755ff54.css.map */
